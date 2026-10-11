@@ -1,0 +1,29 @@
+@using EdutotsSchoolApp.Models
+
+<div class="card mb-3 shadow-sm" style="cursor: pointer; transition: transform 0.2s;" @onclick="SelectSchool">
+    <div class="card-body">
+        <h5 class="card-title text-primary">@School.SchoolName</h5>
+        <h6 class="card-subtitle mb-2 text-muted">ID: @School.SchoolId</h6>
+        <p class="card-text mb-1"><strong>Address:</strong> @School.Address</p>
+        <p class="card-text mb-1"><strong>Phone:</strong> @School.PhoneNo</p>
+        <p class="card-text mb-1"><strong>Email:</strong> @School.EmailAdress</p>
+        <p class="card-text mb-1"><strong>Proprietor:</strong> @School.ProprietorFullName</p>
+        <p class="card-text mb-0"><strong>Head:</strong> @School.HeadFullName</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public School School { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback<School> OnSelect { get; set; }
+
+    private async Task SelectSchool()
+    {
+        if (OnSelect.HasDelegate)
+        {
+            await OnSelect.InvokeAsync(School);
+        }
+    }
+}

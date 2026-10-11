@@ -1,0 +1,130 @@
+@page "/schools"
+@page "/"
+@inject HttpClient Http
+@using EdutotsSchoolApp.Models
+@using EdutotsSchoolApp.Components
+
+<PageTitle>School Directory</PageTitle>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Edutots School Directory</h2>
+
+    <!-- Search Functionality -->
+    <div class="mb-4">
+        <input @bind="Search" @bind:event="oninput" class="form-control" placeholder="Search school..." />
+    </div>
+
+    <!-- Loading State -->
+    @if (schools == null && !error)
+    {
+        <p>Loading schools...</p>
+    }
+
+    <!-- Error Handling -->
+    @if (error)
+    {
+        <p class="text-danger">
+            Unable to retrieve school data.
+        </p>
+    }
+
+    @if (schools != null)
+    {
+        <div class="row">
+            <!-- Schools List Column -->
+            <div class="col-md-7">
+                <h4>School List</h4>
+                @if (!FilteredSchools.Any())
+                {
+                    <p class="text-muted">No schools found matching "@search".</p>
+                }
+                else
+                {
+                    <div style="max-height: 700px; overflow-y: auto; padding-right: 5px;">
+                        @foreach (var school in FilteredSchools)
+                        {
+                            <SchoolCard School="school" OnSelect="HandleSchoolSelected" />
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- School Details Column -->
+            <div class="col-md-5">
+                <div class="card sticky-top" style="top: 20px;">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">School Details</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (selectedSchool != null)
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>School ID:</strong> @selectedSchool.SchoolId</li>
+                                <li class="list-group-item"><strong>School Name:</strong> @selectedSchool.SchoolName</li>
+                                <li class="list-group-item"><strong>Address:</strong> @selectedSchool.Address</li>
+                                <li class="list-group-item"><strong>Phone No:</strong> @selectedSchool.PhoneNo</li>
+                                <li class="list-group-item"><strong>Email Address:</strong> @selectedSchool.EmailAdress</li>
+                                <li class="list-group-item"><strong>Proprietor:</strong> @selectedSchool.ProprietorFullName</li>
+                                <li class="list-group-item"><strong>Head:</strong> @selectedSchool.HeadFullName</li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="text-muted">Select a school from the list to view detailed information.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<School>? schools;
+    private School? selectedSchool;
+    private bool error = false;
+    private string search = string.Empty;
+
+    private string Search
+    {
+        get => search;
+        set => search = value;
+    }
+
+    private IEnumerable<School> FilteredSchools =>
+        string.IsNullOrWhiteSpace(search)
+            ? schools ?? Enumerable.Empty<School>()
+            : (schools ?? Enumerable.Empty<School>()).Where(s =>
+                s.SchoolName != null && s.SchoolName.Contains(search, StringComparison.OrdinalIgnoreCase));
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            error = false;
+            try
+            {
+                schools = await Http.GetFromJsonAsync<List<School>>("https://edutots.net/api/school");
+            }
+            catch (Exception)
+            {
+                schools = await Http.GetFromJsonAsync<List<School>>("data/schools.json");
+            }
+
+            if (schools != null && schools.Any())
+            {
+                selectedSchool = schools.First();
+            }
+        }
+        catch (Exception)
+        {
+            error = true;
+            schools = null;
+        }
+    }
+
+    private void HandleSchoolSelected(School school)
+    {
+        selectedSchool = school;
+    }
+}

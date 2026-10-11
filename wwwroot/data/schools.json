@@ -1,0 +1,74 @@
+[
+    {
+        "schoolId":  10,
+        "schoolName":  "Cornelia International Schools, Enugu",
+        "address":  "6 Jerry Ugwu Avenue, New Haven East Layout Extension Phase 3. Opposite National Orthopedic Hospital, PO Box 4115, Enugu 4001, Enugu State, Nigeria.",
+        "phoneNo":  "08099990531",
+        "emailAddress":  "info@corneliainternationalschools.org",
+        "proprietorFullName":  "Bar. Mrs Jerry Ugwu",
+        "headFullName":  "Mr Oyekunle Akande Anthony"
+    },
+    {
+        "schoolId":  11,
+        "schoolName":  "God\u0027s Light Children School",
+        "address":  "Enugu",
+        "phoneNo":  "08036864713",
+        "emailAddress":  "godslightacademy2022@gmail.com",
+        "proprietorFullName":  "Mrs Nwabeke",
+        "headFullName":  "Mrs Nwabeke"
+    },
+    {
+        "schoolId":  4,
+        "schoolName":  "grant nufor school",
+        "address":  "newen haven",
+        "phoneNo":  "0803544878300",
+        "emailAddress":  "info@landoria.org",
+        "proprietorFullName":  "chisoma anuforom",
+        "headFullName":  "chloe anuforom"
+    },
+    {
+        "schoolId":  5,
+        "schoolName":  "grant nufor school",
+        "address":  "newen haven",
+        "phoneNo":  "0803544878300",
+        "emailAddress":  "info@landoria.org",
+        "proprietorFullName":  "chisoma anuforom",
+        "headFullName":  "shirley anuforom"
+    },
+    {
+        "schoolId":  9,
+        "schoolName":  "Landoria School",
+        "address":  "Enugu, Nigeria",
+        "phoneNo":  "09041111111",
+        "emailAddress":  "admin@landoria.org",
+        "proprietorFullName":  "Engr Anuforom",
+        "headFullName":  "Engr Anuforom"
+    },
+    {
+        "schoolId":  6,
+        "schoolName":  "Notre Dame Nursery and Primary School Awkunanaw",
+        "address":  "1 NOTRE DAME CLOSE, OFF ONE DAY ROAD, AWKUNANAW, ENUGU, NIGERIA",
+        "phoneNo":  "08037465234",
+        "emailAddress":  "admin@notredameshoolenugunpa.com",
+        "proprietorFullName":  "Rev Sister Francisca Aneke",
+        "headFullName":  "Rev Sister Francisca Aneke"
+    },
+    {
+        "schoolId":  7,
+        "schoolName":  "Shepherd Hands Academy",
+        "address":  "21 Romachukwu Street,  Off One Day Road,  Awkunanaw,  Enugu, Nigeria",
+        "phoneNo":  "08037677310",
+        "emailAddress":  "admin@shepherdhandsacademy.com",
+        "proprietorFullName":  "Ambassador  Oliver",
+        "headFullName":  "Mummy Oliver "
+    },
+    {
+        "schoolId":  8,
+        "schoolName":  "Test School",
+        "address":  "Enugu",
+        "phoneNo":  "08030000000",
+        "emailAddress":  "admin@testschool.com",
+        "proprietorFullName":  "Chisom",
+        "headFullName":  "Grant"
+    }
+]
